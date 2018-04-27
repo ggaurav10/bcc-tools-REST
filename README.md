@@ -26,12 +26,12 @@ offcputime:
 # To run in container:
 
 ```
-docker build -t bcc:latest .
+docker build -t bccrest:latest .
 docker run -d \
     --privileged \
     -v /lib/modules:/lib/modules:ro \
     -v /usr/src:/usr/src:ro \
     -v /etc/localtime:/etc/localtime:ro \
-    -p 5000:5000 --name bcc \
-    bcc:latest
+    -p 5000:5000 --name bccrest \
+    bccrest:latest
 ```
