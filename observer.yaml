@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: observer
+  namespace: default
+  labels:
+    monitor: observe
+spec:
+  containers:
+  - name: monitor
+    image: ggaurav10/bccrest:latest
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      privileged: true
+    ports:
+      - containerPort: 5000
+    volumeMounts:
+    - mountPath: /lib/modules
+      name: lib-volume
+    - mountPath: /etc/localtime
+      name: time-volume
+    - mountPath: /dev
+      name: hostdev
+  imagePullSecrets:
+  - name: regsecret
+  hostPID: true
+  hostNetwork: true
+  volumes:
+  - name: lib-volume
+    hostPath:
+      path: /lib/modules
+  - name: src-volume
+    hostPath:
+      path: /usr/src
+  - name: time-volume
+    hostPath:
+      path: /etc/localtime
+  - name: hostdev
+    hostPath:
+      path: /dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: observer
+  namespace: default
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    monitor: observe
