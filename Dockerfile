@@ -17,9 +17,11 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-RUN apt-get install wget
+RUN apt-get update && \
+    apt-get install wget
 RUN wget https://redirector.gvt1.com/edgedl/go/go1.9.2.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.9.2.linux-amd64.tar.gz
+RUN rm -f go1.9.2.linux-amd64.tar.gz
 
 RUN ln -s /usr/lib/linux-tools/4.4.0-96-generic /usr/lib/linux-tools/4.14.32-coreos
 
