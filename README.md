@@ -24,6 +24,7 @@ offcputime:
 `./geturl.py "http://localhost:5000/offcputime?flame=true&duration=10"`
 
 gopro: `go tool pprof`
+
 `./geturl.py "http://localhost:5000/gopro?port=<port>&duration=<duration>" > profile.svg`
 
 # To run in container:
