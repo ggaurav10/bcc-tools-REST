@@ -6,22 +6,25 @@ BCC: https://github.com/iovisor/bcc
 Usage:
 
 vfsstat, cachetop, dcstat:
-curl -v http://localhost:5000/CMD/<ival>/<count>
+`curl -v http://localhost:5000/CMD/<ival>/<count>`
 
 ext4slower:
-curl -v "http://localhost:5000/ext4slower?duration=4&pid=2130&threshold=2&csv=True"
+`curl -v "http://localhost:5000/ext4slower?duration=4&pid=2130&threshold=2&csv=True"`
 
 bitesize, mdflush:
-curl -v http://localhost:5000/CMD/<duration>
+`curl -v http://localhost:5000/CMD/<duration>`
 
 filelife:
-curl -v "http://localhost:5000/CMD?duration=<duration>&p=<pid>"
+`curl -v "http://localhost:5000/CMD?duration=<duration>&p=<pid>"`
 
 biosnoop:
-curl -v http://localhost:5000/CMD?duration=<duration>
+`curl -v http://localhost:5000/CMD?duration=<duration>`
 
 offcputime:
-./geturl.py "http://localhost:5000/offcputime?flame=true&duration=10"
+`./geturl.py "http://localhost:5000/offcputime?flame=true&duration=10"`
+
+gopro: `go tool pprof`
+`./geturl.py "http://localhost:5000/gopro?port=<port>&duration=<duration>" > profile.svg`
 
 # To run in container:
 

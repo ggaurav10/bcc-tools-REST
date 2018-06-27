@@ -25,6 +25,7 @@ RUN rm -f go1.9.2.linux-amd64.tar.gz
 
 RUN ln -s /usr/lib/linux-tools/4.4.0-96-generic /usr/lib/linux-tools/4.14.32-coreos
 
+RUN apt-get install -y graphviz
 ENV PATH     "$PATH:/usr/local/go/bin"
 
 COPY . /app
