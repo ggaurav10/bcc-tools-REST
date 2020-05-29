@@ -39,3 +39,8 @@ docker run -d \
     -p 5000:5000 --name bccrest \
     bccrest:latest
 ```
+
+# To run in Kubernetes:
+```
+kubectl apply -f observer.yaml
+```
